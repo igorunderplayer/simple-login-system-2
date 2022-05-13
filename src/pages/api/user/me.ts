@@ -29,8 +29,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         })
 
         res.status(200).json(user)
+        return
       } catch (err) {
         res.status(401).send('Invalid token')
+        return
       }
     }
 
@@ -69,8 +71,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         })
 
         res.status(200).send('User updated')
+        return
       } catch (err) {
         res.status(401).send('Invalid token')
+        return
       }
     }
     default: {

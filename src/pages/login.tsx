@@ -14,7 +14,7 @@ const Login: React.FC = () => {
       router.push('/')
       return
     }
-  }, [])
+  }, [router, user])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
