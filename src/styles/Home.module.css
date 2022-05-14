@@ -14,21 +14,34 @@
   border-radius: 18px;
   background: #2A2438;
   max-width: 90%;
-  max-height: 75%;
   box-shadow: rgba(0, 0, 0, 0.4) 3px 5px 10px;
-  justify-content: center;
   text-align: center;
   flex-direction: column;
-  gap: 50px
+  gap: 10px;
+  justify-content: space-around;
 }
 
 .userInformations {
   text-align: left;
-  padding: 20px;
+  padding: 0 20px;
+}
+
+.booksButton {
+  background: #411E8F;
+  border-radius: 18px;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 10px;
+  width: 75%;
+  height: 48px;
+  border: none;
+  cursor: pointer;
+  align-self: center;
+  margin-bottom: 10px;
 }
 
 .logoutButton {
-  background: #411E8F;
+  background: #310A5D;
   border-radius: 18px;
   color: #fff;
   font-size: 1.2rem;

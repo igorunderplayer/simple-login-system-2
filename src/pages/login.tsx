@@ -30,8 +30,8 @@ const Login: React.FC = () => {
       })
 
       if (res.status === 200) {
-        const { user } = await res.json()
-        console.log(user)
+        const { token, user } = await res.json()
+        localStorage.setItem('token', token)
         setUser(user)
         router.push('/')
       }

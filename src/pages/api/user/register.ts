@@ -39,8 +39,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(201).json({
       user: {
-        name,
-        email
+        name: user.name,
+        email: user.email
       }
     })
   } catch (err) {

@@ -23,7 +23,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           select: {
             id: true,
             name: true,
+            about: true,
             email: true,
+            public: true,
             books: true
           }
         })
@@ -37,12 +39,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     case 'PATCH': {
-      const { name } = req.body as { name: string }
-      if (!name || name.trim() == '') {
-        res.status(400).send('Invalid name')
-        return
-      }
-
+      const { name, about, public : publicProfile } = req.body as { name: string, about: string, public: boolean }
+  
       if (name.length > 32) {
         res.status(400).send('Name is too long')
         return
@@ -66,7 +64,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             id: decoded.id
           },
           data: {
-            name
+            name,
+            about,
+            public: publicProfile
           }
         })
 

@@ -12,9 +12,11 @@ datasource db {
 
 model User {
   id          String @id @default(uuid())
+  about       String?
   name        String
   email       String @unique
   password    String
+  public      Boolean @default(false)
   createdAt   DateTime @default(now())
   books      Book[]
 }
