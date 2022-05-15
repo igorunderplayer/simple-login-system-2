@@ -18,6 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     !password || password.trim() == ''
   ) {
     res.status(400).send('Invalid name or email or password')
+    return
   }
 
   if (name.length > 32) {

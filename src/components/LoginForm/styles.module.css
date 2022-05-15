@@ -27,6 +27,7 @@
 }
 
 .container button {
+  cursor: pointer;
   border: none;
   border-radius: 18px;
   background: #411E8F;
