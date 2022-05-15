@@ -1,13 +1,14 @@
+import { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
+import LoginForm from '../components/LoginForm'
 import { UserContext } from '../contexts/UserContext'
 
-const Login: React.FC = () => {
+import styles from '../styles/Login.module.css'
+
+const Login: NextPage = () => {
   const router = useRouter()
   const { user, setUser } = useContext(UserContext)
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
   useEffect(() => {
     if (!!user) {
@@ -16,9 +17,7 @@ const Login: React.FC = () => {
     }
   }, [router, user])
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
+  const handleSubmit = async (email: string, password: string) => {
     try {
       const res = await fetch('/api/user/login', {
         method: 'POST',
@@ -42,29 +41,10 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button type="submit">Login</button>
-
-      </form>
+      <LoginForm onSubmit={handleSubmit} />
     </div>
   )
 }

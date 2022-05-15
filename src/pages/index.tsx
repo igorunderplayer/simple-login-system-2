@@ -11,7 +11,7 @@ export default function Home() {
     if(!user) {
       router.push('/login')
     }
-  }, [router])
+  }, [router, user])
 
   if (!user) {
     return (
@@ -28,7 +28,6 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <h1>Home</h1>
-      <p>Seja bem vindo {user.name}</p>
 
       <div className={styles.aboutUser}>
         <h2>Suas informações:</h2>

@@ -1,14 +1,25 @@
+import { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { useEffect, useContext } from 'react'
+import { useContext, useEffect } from 'react'
+import Book from '../components/Book'
 import { UserContext } from '../contexts/UserContext'
 import styles from '../styles/Books.module.css'
 
-const Books = () => {
+const Books: NextPage = () => {
+  const router = useRouter()
   const { user } = useContext(UserContext)
+
+  useEffect(() => {
+    if(!user) {
+      router.push('/login')
+    }
+  }, [router, user])
 
   if (!user) {
     return (
-      <>Loading.....</>
+      <div className={styles.container}>
+        <p>Loading...</p>
+      </div>
     )
   }
 
@@ -16,7 +27,7 @@ const Books = () => {
     <div className={styles.container}>
       { user.books.length < 1 ? 'Vc n possui nenhum livro' : (
         <>
-          <h3>Livros que você possui:</h3>
+          <h1>Livros que você possui:</h1>
           <ul className={styles.books}>
             {user.books.map(book => (
               <li key={book.id}>
@@ -35,14 +46,5 @@ interface IBookProps {
   description: string
 }
 
-const Book: React.FC<IBookProps> = ({ title, description }) => {
-  return (
-    <div className={styles.book}>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </div>
-
-  )
-}
 
 export default Books

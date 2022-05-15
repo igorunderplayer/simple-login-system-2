@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #2A2438;
+  border-radius: 18px;
+  max-width: 90%;
+  width: 500px;
+  max-height: 90%;
+  height: 350px;
+  text-align: center;
+  justify-content: space-around
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.inputs input {
+  border: none;
+  border-radius: 18px;
+  background: #352F44;
+  padding: 10px;
+  height: 40px
+}
+
+.container button {
+  border: none;
+  border-radius: 18px;
+  background: #411E8F;
+  padding: 10px;
+  height: 50px;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+}
